@@ -2,8 +2,11 @@ require("./index.scss");
 require("./particles.js");
 require("./Mahdi-Mohammad-Resume.pdf");
 
-const nav: HTMLElement = document.querySelector("nav")!;
-const hamburger: HTMLElement = document.querySelector("#hamburger")!;
+const header: HTMLElement = document.querySelector("header")!;
+const hamburger: HTMLButtonElement =
+  document.querySelector<HTMLButtonElement>("#hamburger")!;
+const heroImage: HTMLImageElement | null =
+  document.querySelector<HTMLImageElement>("#mahdi");
 const navlinks: NodeListOf<HTMLElement> =
   document.querySelectorAll("nav a, #contactbtn");
 const reveals: NodeListOf<HTMLElement> = document.querySelectorAll(".popin");
@@ -12,15 +15,25 @@ const progressBars: NodeListOf<HTMLElement> =
 
 // Enables dropdown menu with nav links when hamburger is clicked (small screen sizes only).
 hamburger.onclick = (): void => {
-  nav.classList.toggle("active");
+  const isActive: boolean = header.classList.toggle("active");
+  hamburger.setAttribute("aria-expanded", String(isActive));
 };
 
 // Remove active nav when user clicks nav link.
 navlinks.forEach((navlink: HTMLElement): void => {
   navlink.onclick = (): void => {
-    nav.classList.remove("active");
+    header.classList.remove("active");
+    hamburger.setAttribute("aria-expanded", "false");
   };
 });
+
+// Remove the hero image from the DOM if it fails to load.
+if (heroImage) {
+  heroImage.onerror = (): void => {
+    heroImage.onerror = null;
+    heroImage.remove();
+  };
+}
 
 // Loads the width of all the progress bars in skills section automatically.
 progressBars.forEach((progressBar: HTMLElement): void => {

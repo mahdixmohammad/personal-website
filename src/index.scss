@@ -40,7 +40,7 @@ body {
   font-family: "Agency", "Agency-fallback", sans-serif;
 }
 
-nav {
+header {
   display: flex;
   position: sticky;
   top: 0;
@@ -97,10 +97,14 @@ nav {
   position: absolute;
   right: -30px;
   margin-top: 20px;
+  padding: 0;
+  background: transparent;
+  border: 0;
   cursor: pointer;
   transition: 0.4s;
 
   .line {
+    display: block;
     background: white;
     width: 30px;
     height: 3.5px;
@@ -114,12 +118,12 @@ nav {
   }
 }
 
-nav.active ul {
+header.active ul {
   opacity: 1;
   visibility: visible;
 }
 
-nav.active #hamburger .line {
+header.active #hamburger .line {
   background: $secondary-color;
 }
 
@@ -193,7 +197,7 @@ section:not(section:first-of-type) {
     letter-spacing: 1px;
   }
 
-  h3 {
+  .greeting {
     color: $secondary-color;
     font-size: 25px;
   }
@@ -270,7 +274,7 @@ section:not(section:first-of-type) {
   line-height: 50px;
   box-shadow: 0 0 6px $secondary-color;
 
-  h1 {
+  h2 {
     font-size: 31px;
     color: white;
     font-weight: 600;
@@ -696,7 +700,7 @@ footer {
 }
 
 @media only screen and (max-width: 700px) {
-  nav {
+  header {
     height: 70px;
     overflow: visible;
 
