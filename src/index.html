@@ -1,17 +1,43 @@
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="My personal website showcasing my projects and skills."
+    />
     <title>Mahdi Mohammad</title>
-    <link rel="icon" href="assets/images/mahdi_icon.png" />
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
     />
+    <link
+      rel="preload"
+      href="assets/fonts/Agency.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="assets/fonts/Logam.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      fetchpriority="high"
+      as="image"
+      href="assets/images/mahdi-hero.avif"
+      type="image/avif"
+    />
   </head>
   <body>
     <nav>
-      <label class="logo"><a href="">MAHDI</a></label>
+      <a class="logo" href="">MAHDI</a>
       <ul>
         <li><a href="#about">ABOUT</a></li>
         <li><a href="#projects">PROJECTS</a></li>
@@ -24,11 +50,11 @@
         <div class="line"></div>
       </div>
     </nav>
-    <section id="home">
+    <section id="hero">
       <div id="headline">
         <h3>Hello, my name is</h3>
         <h1>MAHDI MOHAMMAD</h1>
-        <h2>Professional Full-Stack Developer.</h2>
+        <h2>Software Engineer</h2>
         <div id="links">
           <a id="contactbtn" href="Mahdi-Mohammad-Resume.pdf" target="_blank"
             >VIEW RESUME</a
@@ -37,70 +63,62 @@
             <a
               href="https://www.linkedin.com/in/mahdixmohammad/"
               target="_blank"
+              class="link"
             >
-              <img
-                src="assets/logos/linkedin_logo.png"
-                alt="LinkedIn"
-                title="LinkedIn"
-                class="link"
-              />
+              <svg viewBox="0 0 382 382" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  fill="#ff5361"
+                  d="M347.445,0H34.555C15.471,0,0,15.471,0,34.555v312.889C0,366.529,15.471,382,34.555,382h312.889 C366.529,382,382,366.529,382,347.444V34.555C382,15.471,366.529,0,347.445,0z M118.207,329.844c0,5.554-4.502,10.056-10.056,10.056 H65.345c-5.554,0-10.056-4.502-10.056-10.056V150.403c0-5.554,4.502-10.056,10.056-10.056h42.806 c5.554,0,10.056,4.502,10.056,10.056V329.844z M86.748,123.432c-22.459,0-40.666-18.207-40.666-40.666S64.289,42.1,86.748,42.1 s40.666,18.207,40.666,40.666S109.208,123.432,86.748,123.432z M341.91,330.654c0,5.106-4.14,9.246-9.246,9.246H286.73 c-5.106,0-9.246-4.14-9.246-9.246v-84.168c0-12.556,3.683-55.021-32.813-55.021c-28.309,0-34.051,29.066-35.204,42.11v97.079 c0,5.106-4.139,9.246-9.246,9.246h-44.426c-5.106,0-9.246-4.14-9.246-9.246V149.593c0-5.106,4.14-9.246,9.246-9.246h44.426 c5.106,0,9.246,4.14,9.246,9.246v15.655c10.497-15.753,26.097-27.912,59.312-27.912c73.552,0,73.131,68.716,73.131,106.472 L341.91,330.654L341.91,330.654z"
+                />
+              </svg>
             </a>
-            <a href="https://github.com/mahdixmohammad" target="_blank">
-              <img
-                src="assets/logos/github_logo.png"
-                alt="GitHub"
-                title="GitHub"
-                class="link"
-              />
+            <a
+              href="https://github.com/mahdixmohammad"
+              target="_blank"
+              class="link"
+            >
+              <svg viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M41.4395 69.3848C28.8066 67.8535 19.9062 58.7617 19.9062 46.9902C19.9062 42.2051 21.6289 37.0371 24.5 33.5918C23.2559 30.4336 23.4473 23.7344 24.8828 20.959C28.7109 20.4805 33.8789 22.4902 36.9414 25.2656C40.5781 24.1172 44.4062 23.543 49.0957 23.543C53.7852 23.543 57.6133 24.1172 61.0586 25.1699C64.0254 22.4902 69.2891 20.4805 73.1172 20.959C74.457 23.543 74.6484 30.2422 73.4043 33.4961C76.4668 37.1328 78.0937 42.0137 78.0937 46.9902C78.0937 58.7617 69.1934 67.6621 56.3691 69.2891C59.623 71.3945 61.8242 75.9883 61.8242 81.252L61.8242 91.2051C61.8242 94.0762 64.2168 95.7031 67.0879 94.5547C84.4102 87.9512 98 70.6289 98 49.1914C98 22.1074 75.9883 6.69539e-07 48.9043 4.309e-07C21.8203 1.92261e-07 -1.9479e-07 22.1074 -4.3343e-07 49.1914C-6.20631e-07 70.4375 13.4941 88.0469 31.6777 94.6504C34.2617 95.6074 36.75 93.8848 36.75 91.3008L36.75 83.6445C35.4102 84.2188 33.6875 84.6016 32.1562 84.6016C25.8398 84.6016 22.1074 81.1563 19.4277 74.7441C18.375 72.1602 17.2266 70.6289 15.0254 70.3418C13.877 70.2461 13.4941 69.7676 13.4941 69.1934C13.4941 68.0449 15.4082 67.1836 17.3223 67.1836C20.0977 67.1836 22.4902 68.9063 24.9785 72.4473C26.8926 75.2227 28.9023 76.4668 31.2949 76.4668C33.6875 76.4668 35.2187 75.6055 37.4199 73.4043C39.0469 71.7773 40.291 70.3418 41.4395 69.3848Z"
+                  fill="#ff5361"
+                />
+              </svg>
             </a>
-            <!-- <a href="https://www.instagram.com/mahdixmohammad/" target="_blank">
-							<img src="assets/logos/instagram_logo.png" alt="Instagram" title="Instagram" class="link" />
-						</a> -->
           </div>
         </div>
       </div>
-      <div class="animation-cover"></div>
       <div class="opacity-cover"></div>
       <div id="particles-js"></div>
       <img
-        src="assets/images/home.png"
+        src="assets/images/mahdi-hero.avif"
         id="mahdi"
         onerror="
           this.onerror = null;
           this.remove();
         "
-        alt="me"
+        alt="This is what I look like."
       />
     </section>
     <section>
       <div class="scroll-to" id="about"></div>
       <div class="title popin"><h1>ABOUT</h1></div>
       <div id="content1" class="popin">
-        <div id="education">
-          <div id="pfp"></div>
-          <div id="gpa">
-            <img src="assets/logos/mcmaster-university.png" />
-            <p>GPA: 3.9</p>
-          </div>
-        </div>
+        <img
+          src="assets/images/profile-picture.avif"
+          id="pfp"
+          alt="My LinkedIn profile picture."
+        />
         <div id="description">
           <p>
-            Currently pursuing a full-time undergraduate degree in Computer
-            Science with a minor in Statistics at McMaster University, my
-            passion for technology is matched by my commitment to continuous
-            learning and skill development. As a dedicated full-stack developer,
-            I have honed my skills across a diverse range of languages, tools,
-            and frameworks, including TypeScript, React, Next.js, Express.js,
-            TailwindCSS, PostgreSQL, and MongoDB. I thrive on tackling
-            challenging projects and am always eager to expand my knowledge and
-            expertise. In addition to my technical abilities, I am fluent in
-            English, French, and Arabic, which allows me to communicate
-            effectively in unique environments. I am driven by a deep passion
-            for my work and a relentless dedication to achieving excellence in
-            everything I undertake.
+            I build fast, scalable, user-facing web applications using
+            TypeScript, React, Next.js, and Node.js, backed by PostgreSQL,
+            MongoDB, and cloud infrastructure on AWS. I'm also passionate about
+            AI and machine learning, with a focus on integrating intelligent
+            systems into real-world applications and enhancing user experiences.
+
             <br /><br />
             <b>
-              Let’s connect and explore how we can collaborate on innovative
+              Let's connect and explore how we can collaborate on innovative
               projects!</b
             >
           </p>
@@ -138,7 +156,11 @@
               >
             </div>
           </div>
-          <img src="assets/images/simutrade_project.png" />
+          <img
+            src="assets/images/simutrade-project.avif"
+            loading="lazy"
+            alt="The landing page of the SimuTrade project."
+          />
         </div>
         <div class="project popin">
           <div class="information">
@@ -167,7 +189,11 @@
               >
             </div>
           </div>
-          <img src="assets/images/future_gulf_project.png" />
+          <img
+            src="assets/images/future-gulf-project.avif"
+            loading="lazy"
+            alt="The landing page of the Future Gulf Project."
+          />
         </div>
         <div class="project popin">
           <div class="information">
@@ -196,7 +222,11 @@
               >
             </div>
           </div>
-          <img src="assets/images/one_million_project.png" />
+          <img
+            src="assets/images/one-million-project.avif"
+            loading="lazy"
+            alt="The landing page of the One Million project."
+          />
         </div>
         <div class="project popin">
           <div class="information">
@@ -226,7 +256,11 @@
               >
             </div>
           </div>
-          <img src="assets/images/speedster_project.png" />
+          <img
+            src="assets/images/speedster-project.avif"
+            loading="lazy"
+            alt="The landing page of the Speedster project."
+          />
         </div>
       </div>
     </section>
@@ -239,6 +273,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+              loading="lazy"
+              alt="The HTML icon."
             />
             <p>HTML</p>
             <div class="progress">
@@ -249,6 +285,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg"
+              loading="lazy"
+              alt="The SASS icon."
             />
             <p>SASS / CSS</p>
             <div class="progress">
@@ -259,6 +297,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+              loading="lazy"
+              alt="The TypeScript icon."
             />
             <p>TypeScript (JS)</p>
             <div class="progress">
@@ -269,6 +309,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+              loading="lazy"
+              alt="The Python icon."
             />
             <p>Python</p>
             <div class="progress">
@@ -279,6 +321,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+              loading="lazy"
+              alt="The C/C++ icon."
             />
             <p>C/C++</p>
             <div class="progress">
@@ -292,6 +336,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg"
+              loading="lazy"
+              alt="The React icon."
             />
             <p>React</p>
             <div class="progress">
@@ -302,6 +348,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
+              loading="lazy"
+              alt="The Next.js icon."
             />
             <p>Next.js</p>
             <div class="progress">
@@ -312,6 +360,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg"
+              loading="lazy"
+              alt="The Redux icon."
             />
             <p>Redux</p>
             <div class="progress">
@@ -323,6 +373,7 @@
             <i
               style="font-size: 75px; margin: 10px"
               class="devicon-express-original"
+              alt="The Express icon."
             ></i>
             <p>Express</p>
             <div class="progress">
@@ -333,6 +384,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+              loading="lazy"
+              alt="The Tailwind CSS icon."
             />
             <p>Tailwind CSS</p>
             <div class="progress">
@@ -346,6 +399,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original-wordmark.svg"
+              loading="lazy"
+              alt="The Node.js icon."
             />
             <p>Node.js</p>
             <div class="progress">
@@ -356,6 +411,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/webpack/webpack-original.svg"
+              loading="lazy"
+              alt="The Webpack icon."
             />
             <p>Webpack</p>
             <div class="progress">
@@ -366,6 +423,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+              loading="lazy"
+              alt="The Git icon."
             />
             <p>Git</p>
             <div class="progress">
@@ -376,6 +435,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+              loading="lazy"
+              alt="The PostgreSQL icon."
             />
             <p>PostgresSQL</p>
             <div class="progress">
@@ -386,6 +447,8 @@
           <div class="skill">
             <img
               src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+              loading="lazy"
+              alt="The MongoDB icon."
             />
             <p>MongoDB</p>
             <div class="progress">
@@ -399,7 +462,7 @@
     <section>
       <div class="scroll-to" id="contact"></div>
       <form class="popin" method="post" data-netlify="true">
-        <div class="title" id="contact"><h1>CONTACT ME</h1></div>
+        <div class="title"><h1>CONTACT ME</h1></div>
         <input
           type="text"
           id="name"
@@ -434,37 +497,14 @@
       </form>
     </section>
     <footer>
-      <label class="logo"><a href="">MAHDI</a></label>
-      <div id="countries">
-        <img
-          src="assets/logos/canada_flag.png"
-          alt="Canada"
-          title="English"
-          class="flag"
-        />
-        <img
-          src="assets/logos/france_flag.png"
-          alt="France"
-          title="French"
-          class="flag"
-        />
-        <img
-          src="assets/logos/iraq_flag.png"
-          alt="Iraq"
-          title="Arabic"
-          class="flag"
-        />
-      </div>
+      <a class="logo" href="">MAHDI</a>
       <div id="footer-links">
-        <!-- <a href="https://www.instagram.com/mahdixmohammad/" target="_blank">Instagram</a> -->
         <a href="https://www.linkedin.com/in/mahdixmohammad/" target="_blank"
           >LinkedIn</a
         >
         <a href="https://github.com/mahdixmohammad" target="_blank">Github</a>
       </div>
-      <label id="copyright"
-        >Copyright © 2023 Mahdi Mohammad. All rights reserved.</label
-      >
+      <label id="copyright">Copyright © 2026 Mahdi Mohammad.</label>
     </footer>
   </body>
 </html>

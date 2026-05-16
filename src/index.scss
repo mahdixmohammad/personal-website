@@ -3,12 +3,23 @@ $secondary-color: rgb(255, 83, 97);
 
 @font-face {
   font-family: "Logam";
-  src: url("assets/fonts/Logam.otf");
+  src: url("assets/fonts/Logam.woff2");
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Agency";
-  src: url("assets/fonts/Agency.TTF");
+  src: url("assets/fonts/Agency.woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Agency-fallback";
+  src: local("Georgia");
+  size-adjust: 75%;
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 50%;
 }
 
 html {
@@ -26,7 +37,7 @@ html {
 
 body {
   background: rgb(20, 20, 20);
-  font-family: "Agency";
+  font-family: "Agency", "Agency-fallback", sans-serif;
 }
 
 nav {
@@ -54,9 +65,13 @@ nav {
     font-size: 18px;
   }
 
-  a:not(.logo a) {
+  a:not(a.logo) {
     color: rgb(195, 195, 195);
-    font-family: "Microsoft JhengHei";
+    font-family: "Agency", "Agency-fallback", sans-serif;
+    font-size: 24px;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+
     cursor: pointer;
 
     &:hover {
@@ -112,10 +127,10 @@ section:not(section:first-of-type) {
   padding-top: 110px;
 }
 
-#home {
+#hero {
   display: flex;
   position: relative;
-  background: rgb(5, 5, 5);
+  background: rgb(0, 0, 0);
   height: 600px;
   width: 100%;
   margin: auto;
@@ -126,21 +141,6 @@ section:not(section:first-of-type) {
   to {
     left: -150%;
   }
-}
-
-.animation-cover {
-  z-index: 10;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  background: black;
-  box-shadow: 0 0 100px 100px black;
-  animation: slideleft;
-  animation-delay: 0.9s;
-  animation-duration: 1.4s;
-  animation-timing-function: ease-in;
-  animation-fill-mode: forwards;
 }
 
 .opacity-cover {
@@ -174,27 +174,13 @@ section:not(section:first-of-type) {
   pointer-events: none;
 }
 
-@keyframes popIn {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
 #headline {
   z-index: 20;
   position: relative;
   left: 15%;
-  margin-top: 150px;
+  margin: auto 0;
   height: 225px;
   width: 413px;
-  opacity: 0;
-  transform: scale(0);
-  animation: popIn;
-  animation-delay: 0.5s;
-  animation-duration: 0.5s;
-  animation-timing-function: ease-in;
-  animation-fill-mode: forwards;
 
   h1 {
     font-size: 65px;
@@ -216,6 +202,7 @@ section:not(section:first-of-type) {
 #links {
   display: flex;
   width: 410px;
+  height: 56px;
   margin-top: 20px;
 
   div {
@@ -224,14 +211,14 @@ section:not(section:first-of-type) {
     width: 180px;
   }
 
-  %sublink-hover {
+  %link-hover {
     border: 2px solid $secondary-color;
     box-shadow: 0 0 10px $secondary-color;
     transition: 0.4s;
   }
 
   #contactbtn {
-    height: 55px;
+    height: 56px;
     width: 170px;
     padding: 16px;
     text-align: center;
@@ -244,20 +231,23 @@ section:not(section:first-of-type) {
     cursor: pointer;
 
     &:hover {
-      @extend %sublink-hover;
+      @extend %link-hover;
     }
   }
 
   .link {
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     padding: 10px;
     border: 2px solid white;
     background: black;
     border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:hover {
-      @extend %sublink-hover;
+      @extend %link-hover;
     }
   }
 }
@@ -294,51 +284,17 @@ section:not(section:first-of-type) {
   column-gap: 5%;
 }
 
-#education {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
+#pfp {
+  width: 182px;
+  height: 182px;
+  border-radius: 100px;
+  margin: auto 10px;
+  border: 1px solid transparent;
+  transition: 0.4s;
 
-  #gpa {
-    display: flex;
-    align-items: center;
-    height: 50px;
-    gap: 5px;
-
-    img {
-      width: 25px;
-      object-fit: contain;
-    }
-
-    p {
-      margin: 0;
-      font-size: 1.3rem;
-      color: white;
-    }
-  }
-
-  #pfp {
-    background: {
-      color: white;
-      image: url("assets/images/profile_picture.png");
-      position: center;
-      size: 142px;
-      repeat: no-repeat;
-    }
-
-    width: 162px;
-    height: 162px;
-    border-radius: 100px;
-    margin: 0 20px;
-    box-shadow: 0 0 6px white;
-    border: 1px solid transparent;
-
-    &:hover {
-      border: 1px solid $secondary-color;
-      box-shadow: 0 0 10px $secondary-color;
-      transition: 0.4s;
-    }
+  &:hover {
+    border: 1px solid $secondary-color;
+    box-shadow: 0 0 6px $secondary-color;
   }
 }
 
@@ -370,7 +326,7 @@ section:nth-of-type(2) p {
   align-items: center;
   width: 100%;
   font-size: 22px;
-  padding: 150px 30px;
+  padding: 80px 30px;
   transition: 0.6s;
   gap: 5%;
 
@@ -623,15 +579,15 @@ section:nth-of-type(5) {
 
 footer {
   background: $primary-color;
-  padding: 30px 0;
+  padding: 20px 0;
   width: 100%;
-  height: 220px;
+  height: 156px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  font-family: "Calibri";
+  font-size: 18px;
 
   .logo {
     line-height: 0;
