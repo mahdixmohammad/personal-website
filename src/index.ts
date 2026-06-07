@@ -40,34 +40,55 @@ progressBars.forEach((progressBar: HTMLElement): void => {
   progressBar.querySelector("div")!.style.width = `${progressBar.textContent}`;
 });
 
-// As user scrolls down, sections pop in.
-function popInAnimation(): void {
+// Scroll-driven pop-in animation. Elements fade and scale up as they enter view.
+const prefersReducedMotion: boolean = window.matchMedia(
+  "(prefers-reduced-motion: reduce)",
+).matches;
+
+if (reveals.length > 0 && !prefersReducedMotion) {
+  let rafId: number = 0;
+
+  const updateReveals = (): void => {
+    rafId = 0;
+    const viewportHeight: number = window.innerHeight;
+
+    reveals.forEach((element: HTMLElement): void => {
+      let elementVisible: number = element.clientHeight * 0.09;
+      if (elementVisible < 30) elementVisible = 30;
+      else if (elementVisible > 60) elementVisible = 60;
+      if (element.classList.contains("project")) elementVisible = 20;
+
+      const elementTop: number = element.getBoundingClientRect().top;
+      const distanceFromView: number = Math.max(
+        0,
+        viewportHeight - elementTop - elementVisible,
+      );
+      const opacity: number = (distanceFromView / elementVisible) * 0.4 - 1;
+      let scale: number = (distanceFromView / elementVisible) * 0.1 + 0.25;
+
+      if (scale >= 1) {
+        scale = 1;
+        element.classList.add("visible");
+      } else {
+        element.classList.remove("visible");
+      }
+      element.style.opacity = `${opacity}`;
+      element.style.transform = `scale(${scale})`;
+    });
+  };
+
+  const scheduleUpdate = (): void => {
+    if (rafId) return;
+    rafId = requestAnimationFrame(updateReveals);
+  };
+
+  window.addEventListener("scroll", scheduleUpdate, { passive: true });
+
+  // Initial pass to handle page-load state (no scroll event has fired yet).
+  updateReveals();
+} else {
+  // Reduced motion: render everything in its final state, no animation.
   reveals.forEach((element: HTMLElement): void => {
-    let elementVisible: number = element.clientHeight * 0.09;
-    if (elementVisible < 30) elementVisible = 30;
-    else if (elementVisible > 60) elementVisible = 60;
-
-    if (element.classList.contains("project")) elementVisible = 20;
-    let elementTop: number = element.getBoundingClientRect().top;
-    let distanceFromView: number = Math.max(
-      0,
-      window.innerHeight - elementTop - elementVisible,
-    );
-    let opacity: number = (distanceFromView / elementVisible) * 0.4 - 1;
-    let scale: number = (distanceFromView / elementVisible) * 0.1 + 0.25;
-
-    if (scale >= 1) {
-      scale = 1;
-      element.classList.add("visible");
-    } else {
-      element.classList.remove("visible");
-    }
-    element.style.opacity = `${opacity}`;
-    element.style.transform = `scale(${scale})`;
+    element.classList.add("visible");
   });
 }
-
-window.addEventListener("scroll", popInAnimation);
-
-// Checks the scroll position on page load.
-popInAnimation();
